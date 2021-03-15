@@ -11,7 +11,7 @@ namespace WpfApp1
 {
     public class Api
     {
-        public static  string InPostAsync(ApiPost apiPost, string name)
+        public static async Task< string> InPostAsync(ApiPost apiPost, string name)
         {
             WebRequest request = WebRequest.Create(String.Format("http://localhost:5000/api/analyzer/{0}", name));
             request.Method = "POST"; // для отправки используется метод Post
@@ -31,7 +31,7 @@ namespace WpfApp1
                 dataStream.Write(byteArray, 0, byteArray.Length);
             }
 
-            WebResponse response =  request.GetResponse();
+            WebResponse response =  await request.GetResponseAsync();
 
             using (Stream stream = response.GetResponseStream())
             {

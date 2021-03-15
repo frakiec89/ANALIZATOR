@@ -47,8 +47,10 @@ namespace WpfApp1
                 var inAnaliz = new ApiPost { patient = p.Text, services = servises };
 
 
-                var s = Api.InPostAsync(inAnaliz, a.Text);
+                var s = await  Api.InPostAsync(inAnaliz, a.Text);
+
                 MessageBox.Show(s);
+
             }
             catch (WebException ex)
             {
@@ -98,6 +100,12 @@ namespace WpfApp1
                 }
 
             }
+
+
+           
+          
+
+
         }
     }
 }
